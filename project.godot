@@ -11,5 +11,17 @@ config_version=5
 [application]
 
 config/name="SkunkDruid"
+run/main_scene="res://World/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=160
+window/size/viewport_height=72
+window/size/mode=2
+window/stretch/mode="viewport"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
