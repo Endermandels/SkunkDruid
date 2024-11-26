@@ -1,26 +1,33 @@
-[gd_scene load_steps=6 format=4 uid="uid://cacwhdyj7dj85"]
+[gd_scene load_steps=7 format=4 uid="uid://cacwhdyj7dj85"]
 
 [ext_resource type="Texture2D" uid="uid://b23n16oux73it" path="res://assets/background.png" id="1_3tfx1"]
 [ext_resource type="Texture2D" uid="uid://ioeph0cxl517" path="res://assets/tile.png" id="2_763di"]
 [ext_resource type="PackedScene" uid="uid://0tjp7nveo3a4" path="res://World/player.tscn" id="3_n8w6x"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b0lhb"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlbpe"]
 texture = ExtResource("2_763di")
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_b0lhb")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_kl5hl"]
+occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vlbpe")
 
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(80, 36)
+position = Vector2(160, 72)
+scale = Vector2(2, 2)
 texture = ExtResource("1_3tfx1")
 
 [node name="GrassTiles" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAANAAYAAAAAAAAAAAAMAAgAAAAAAAAAAAALAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAMAAYAAAAAAAAAAAAOAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAASAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAcAAAAAAAAAAAATAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAD//wgAAAAAAAAAAAD//wcAAAAAAAAAAAD//wYAAAAAAAAAAAD//wUAAAAAAAAAAAD//wQAAAAAAAAAAAD//wMAAAAAAAAAAAD//wIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_kl5hl")
 
 [node name="Player" parent="." instance=ExtResource("3_n8w6x")]
